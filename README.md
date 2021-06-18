@@ -45,4 +45,14 @@ loss.backward()
 # here !
 torch.nn.utils.clip_grad_norm(model.parameters(), max_norm=1)
 ```
+- using lr schedular
+```python
+# define scheduler
+scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=0.1, patience=5, verbose=True)
+
+# use at the end of epoch
+mezn_loss = sum(losses)/len(losses)
+scheduler.step(mezn_loss)
+
+```
  
